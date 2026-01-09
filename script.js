@@ -33,4 +33,21 @@ form.addEventListener('submit', function(e) {
         errores.push('El mensaje es obligatorio');
         messageField.style.borderColor = 'red';
     }
+    
+    if (errores.length > 0) {
+        formMessage.textContent = errores.join(', ');
+        formMessage.style.color = 'red';
+    } else {
+        alert("Gracias por contactarnos");
+        form.reset();
+        messageHelp.style.display = 'none';
+    }
+});
+
+messageField.addEventListener('focus', () => {
+    messageHelp.style.display = 'block';
+});
+
+messageField.addEventListener('blur', () => {
+    messageHelp.style.display = 'none';
 });

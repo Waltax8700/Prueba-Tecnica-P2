@@ -83,10 +83,6 @@ input:invalid, textarea:invalid {
     display: none;
 }
 
-textarea:focus + .help-text {
-    display: block;
-}
-
 @media (max-width: 600px) {
     .custom-block {
         padding: 20px;
