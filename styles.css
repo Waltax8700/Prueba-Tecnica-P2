@@ -1,0 +1,106 @@
+.custom-block {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 30px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
+}
+
+.custom-block h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.custom-block form {
+    display: flex;
+    flex-direction: column;
+}
+
+.custom-block label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.custom-block input,
+.custom-block textarea {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.custom-block input:focus,
+.custom-block textarea:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+    outline: none;
+}
+
+.custom-block textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.custom-block button {
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.custom-block button:hover {
+    background-color: #45a049;
+    transform: scale(1.02);
+}
+
+#formMessage {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+input:invalid, textarea:invalid {
+    border-color: black;
+}
+
+.help-text {
+    font-size: 0.85rem;
+    color: #d9534f;
+    margin-top: -10px;
+    margin-bottom: 15px;
+    display: none;
+}
+
+textarea:focus + .help-text {
+    display: block;
+}
+
+@media (max-width: 600px) {
+    .custom-block {
+        padding: 20px;
+        margin: 20px;
+    }
+
+    .custom-block input,
+    .custom-block textarea {
+        font-size: 0.95rem;
+        padding: 8px;
+    }
+
+    .custom-block button {
+        font-size: 0.95rem;
+        padding: 10px;
+    }
+}
