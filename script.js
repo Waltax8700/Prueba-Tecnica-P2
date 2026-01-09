@@ -3,7 +3,29 @@ const formMessage = document.getElementById('formMessage');
 const messageField = document.getElementById('message');
 const messageHelp = document.getElementById('messageHelp');
 
-form.addEventListener('submit', function(e) {
+async function enviarMensajeAPI(nombre, email, mensaje) {
+    try {
+        const response = await fetch('http://185.241.151.197:8001/api/mensajes', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ nombre, email, mensaje })
+        });
+
+        if (!response.ok) {
+            throw new Error('Error al enviar el mensaje');
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+}
+
+form.addEventListener('submit',async function(e) {
     e.preventDefault();
 
     const name = document.getElementById('name');
@@ -38,9 +60,20 @@ form.addEventListener('submit', function(e) {
         formMessage.textContent = errores.join(', ');
         formMessage.style.color = 'red';
     } else {
-        alert("Gracias por contactarnos");
-        form.reset();
-        messageHelp.style.display = 'none';
+        try {
+            const resultado = await enviarMensajeAPI(
+                name.value.trim(),
+                email.value.trim(),
+                messageField.value.trim()
+            );
+            console.log('Respuesta de la API:', resultado);
+            alert("Gracias por contactarnos");
+            form.reset();
+            messageHelp.style.display = 'none';
+        } catch {
+            formMessage.textContent = 'No se pudo enviar el mensaje. Intenta nuevamente.';
+            formMessage.style.color = 'red';
+        }
     }
 });
 
